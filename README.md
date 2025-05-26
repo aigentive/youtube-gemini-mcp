@@ -1,4 +1,4 @@
-![YouTube Gemini MCP Hero](assets/hero-image.png)
+![YouTube Gemini MCP Hero](https://raw.githubusercontent.com/aigentive/youtube-gemini-mcp/main/assets/hero-image.png)
 
 # YouTube Gemini MCP Server
 
