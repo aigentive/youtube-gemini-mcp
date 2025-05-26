@@ -2,11 +2,11 @@
 name = "youtube-gemini-mcp"
 version = "0.1.0"
 description = "Session-based conversational YouTube video analysis MCP server using Gemini 2.5 Pro"
-authors = ["Your Name <your.email@example.com>"]
+authors = ["Laza Bogdan <laza.bogdan@macro-net.ro>"]
 readme = "README.md"
 packages = [{include = "youtube_gemini_mcp", from = "src"}]
-repository = "https://github.com/yourusername/youtube-gemini-mcp"
-homepage = "https://github.com/yourusername/youtube-gemini-mcp"
+repository = "https://github.com/aigentive/youtube-gemini-mcp"
+homepage = "https://github.com/aigentive/youtube-gemini-mcp"
 keywords = ["youtube", "gemini", "mcp", "video-analysis", "ai", "claude", "conversational"]
 classifiers = [
     "Development Status :: 4 - Beta",

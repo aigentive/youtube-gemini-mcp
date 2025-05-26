@@ -61,7 +61,7 @@ analyze_local_video(
 ### Setup
 ```bash
 # Clone repository
-git clone https://github.com/your-username/youtube-gemini-mcp
+git clone https://github.com/aigentive/youtube-gemini-mcp
 cd youtube-gemini-mcp
 
 # Install with Poetry
@@ -300,9 +300,9 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guid
 
 ## 📞 Support & Community
 
-- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/your-username/youtube-gemini-mcp/issues)
-- 💡 **Feature Requests**: [GitHub Issues](https://github.com/your-username/youtube-gemini-mcp/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/your-username/youtube-gemini-mcp/discussions)
+- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/aigentive/youtube-gemini-mcp/issues)
+- 💡 **Feature Requests**: [GitHub Issues](https://github.com/aigentive/youtube-gemini-mcp/issues)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/aigentive/youtube-gemini-mcp/discussions)
 - 📖 **Documentation**: Check our comprehensive docs above
 
 ### Getting Help

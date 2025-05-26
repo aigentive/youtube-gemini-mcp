@@ -3,7 +3,7 @@
     "youtube-gemini-mcp-dev": {
       "command": "poetry",
       "args": ["run", "python", "-m", "youtube_gemini_mcp.server"],
-      "cwd": "/Users/lazabogdan/Code/youtube-to-gemini-mcp",
+      "cwd": "/absolute/path/to/youtube-gemini-mcp",
       "env": {
         "GOOGLE_API_KEY": "your_google_api_key_here",
         "LOG_LEVEL": "DEBUG",
