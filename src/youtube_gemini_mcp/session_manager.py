@@ -34,7 +34,7 @@ class VideoSession:
     """Complete session state for conversational video analysis."""
 
     session_id: str = field(default_factory=lambda: str(uuid.uuid4()))
-    model: str = "gemini-2.5-pro"
+    model: str = "gemini-2.5-pro-preview-05-06"
     created_at: datetime = field(default_factory=datetime.now)
     last_activity: datetime = field(default_factory=datetime.now)
     session_name: Optional[str] = None
@@ -72,7 +72,7 @@ class SessionManager:
         self,
         description: str,
         video_source: str,
-        model: str = "gemini-2.5-pro",
+        model: str = "gemini-2.5-pro-preview-05-06",
         session_name: Optional[str] = None,
         source_type: str = "youtube_url",
     ) -> Dict[str, Any]:

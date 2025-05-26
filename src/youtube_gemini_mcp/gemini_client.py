@@ -44,7 +44,7 @@ class GeminiClient:
 
             # Generate response using Gemini 2.5 Pro
             response = self.client.models.generate_content(
-                model="models/gemini-2.5-pro",
+                model="models/gemini-2.5-pro-preview-05-06",
                 contents=types.Content(parts=prompt_parts),
             )
 
@@ -109,7 +109,7 @@ class GeminiClient:
 
             # Generate response
             response = self.client.models.generate_content(
-                model="models/gemini-2.5-pro",
+                model="models/gemini-2.5-pro-preview-05-06",
                 contents=types.Content(parts=prompt_parts),
             )
 
@@ -170,7 +170,7 @@ class GeminiClient:
 
             # Generate response
             response = self.client.models.generate_content(
-                model="models/gemini-2.5-pro",
+                model="models/gemini-2.5-pro-preview-05-06",
                 contents=types.Content(parts=prompt_parts),
             )
 
@@ -250,7 +250,7 @@ class GeminiClient:
             return {
                 "success": True,
                 "models": model_list,
-                "default_model": "models/gemini-2.5-pro",
+                "default_model": "models/gemini-2.5-pro-preview-05-06",
             }
 
         except Exception as e:

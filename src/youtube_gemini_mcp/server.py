@@ -87,7 +87,7 @@ def get_files_uploader() -> FilesUploader:
 def create_video_session(
     description: str,
     video_source: str,
-    model: str = "gemini-2.5-pro",
+    model: str = "gemini-2.5-pro-preview-05-06",
     session_name: Optional[str] = None,
     source_type: str = "youtube_url",
 ) -> Dict[str, Any]:
@@ -208,7 +208,7 @@ def analyze_video_in_session(
 def analyze_youtube_video(
     youtube_url: str,
     prompt: str,
-    model: str = "gemini-2.5-pro",
+    model: str = "gemini-2.5-pro-preview-05-06",
     session_id: Optional[str] = None,
 ) -> Dict[str, Any]:
     """Single-shot or session-integrated YouTube video analysis using direct URL method.
@@ -264,7 +264,7 @@ def analyze_youtube_video(
 def analyze_local_video(
     video_path: str,
     prompt: str,
-    model: str = "gemini-2.5-pro",
+    model: str = "gemini-2.5-pro-preview-05-06",
     session_id: Optional[str] = None,
 ) -> Dict[str, Any]:
     """Single-shot or session-integrated local video analysis using Files API.

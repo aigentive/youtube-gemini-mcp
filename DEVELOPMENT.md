@@ -133,7 +133,7 @@ GOOGLE_API_KEY="your_google_api_key_here"
 ```bash
 MCP_MAX_SESSIONS=50               # Maximum concurrent sessions
 MCP_SESSION_TIMEOUT=7200          # Session timeout in seconds
-GEMINI_MODEL_DEFAULT="gemini-2.5-pro"  # Default model
+GEMINI_MODEL_DEFAULT="gemini-2.5-pro-preview-05-06"  # Default model
 MAX_VIDEO_DURATION=7200           # Max video length in seconds
 AUTO_CLEANUP_FILES="true"         # Auto-cleanup uploaded files
 LOG_LEVEL="DEBUG"                 # Logging level
@@ -272,7 +272,7 @@ logging.basicConfig(
 @dataclass
 class VideoSession:
     session_id: str = field(default_factory=uuid4)
-    model: str = "gemini-2.5-pro"
+    model: str = "gemini-2.5-pro-preview-05-06"
     created_at: datetime = field(default_factory=datetime.now)
     last_activity: datetime = field(default_factory=datetime.now)
     session_name: Optional[str] = None
@@ -310,7 +310,7 @@ class VideoAnalysisCall:
 ```python
 # Preferred method for YouTube videos
 response = self.client.models.generate_content(
-    model='models/gemini-2.5-pro',
+    model='models/gemini-2.5-pro-preview-05-06',
     contents=types.Content(parts=[
         types.Part(file_data=types.FileData(file_uri=youtube_url)),
         types.Part(text=user_prompt)

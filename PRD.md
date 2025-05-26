@@ -86,7 +86,7 @@ class VideoAnalysisCall:
 class VideoSession:
     """Complete session state for conversational video analysis."""
     session_id: str = field(default_factory=lambda: str(uuid.uuid4()))
-    model: str = "gemini-2.5-pro"
+    model: str = "gemini-2.5-pro-preview-05-06"
     created_at: datetime = field(default_factory=datetime.now)
     last_activity: datetime = field(default_factory=datetime.now)
     session_name: Optional[str] = None
@@ -251,7 +251,7 @@ if __name__ == "__main__":
 
 ### Session Management Tools
 
-#### `create_video_session(description, video_source, model="gemini-2.5-pro", session_name=None, source_type="youtube_url")`
+#### `create_video_session(description, video_source, model="gemini-2.5-pro-preview-05-06", session_name=None, source_type="youtube_url")`
 **Purpose**: Create new conversational video analysis session  
 **Input**: 
 - `description`: Session context/purpose
@@ -273,7 +273,7 @@ if __name__ == "__main__":
   },
   "processing_method": "youtube_url_direct",
   "youtube_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-  "model": "gemini-2.5-pro",
+  "model": "gemini-2.5-pro-preview-05-06",
   "status": "ready_for_analysis"
 }
 ```
@@ -290,7 +290,7 @@ if __name__ == "__main__":
   },
   "processing_method": "files_api",
   "google_file_id": "files/abc123",
-  "model": "gemini-2.5-pro",
+  "model": "gemini-2.5-pro-preview-05-06",
   "status": "ready_for_analysis"
 }
 ```
@@ -331,7 +331,7 @@ if __name__ == "__main__":
 
 ### Direct Video Analysis Tools
 
-#### `analyze_youtube_video(youtube_url, prompt, model="gemini-2.5-pro", session_id=None)`
+#### `analyze_youtube_video(youtube_url, prompt, model="gemini-2.5-pro-preview-05-06", session_id=None)`
 **Purpose**: Single-shot or session-integrated YouTube video analysis using direct URL method  
 **Input**:
 - `youtube_url`: YouTube video URL or ID
@@ -346,7 +346,7 @@ if __name__ == "__main__":
 4. Return structured response with video insights
 5. No cleanup needed (no local files)
 
-#### `analyze_local_video(video_path, prompt, model="gemini-2.5-pro", session_id=None)`
+#### `analyze_local_video(video_path, prompt, model="gemini-2.5-pro-preview-05-06", session_id=None)`
 **Purpose**: Single-shot or session-integrated local video analysis using Files API  
 **Input**:
 - `video_path`: Local video file path
@@ -592,7 +592,7 @@ class GeminiClient:
             
             # Generate response using Gemini 2.5 Pro
             response = self.client.models.generate_content(
-                model='models/gemini-2.5-pro',
+                model='models/gemini-2.5-pro-preview-05-06',
                 contents=types.Content(parts=prompt_parts)
             )
             
@@ -659,7 +659,7 @@ class GeminiClient:
             
             # Generate response
             response = self.client.models.generate_content(
-                model='models/gemini-2.5-pro',
+                model='models/gemini-2.5-pro-preview-05-06',
                 contents=types.Content(parts=prompt_parts)
             )
             
@@ -724,7 +724,7 @@ class GeminiClient:
             
             # Generate response
             response = self.client.models.generate_content(
-                model='models/gemini-2.5-pro',
+                model='models/gemini-2.5-pro-preview-05-06',
                 contents=types.Content(parts=prompt_parts)
             )
             
@@ -1035,7 +1035,7 @@ class FilesUploader:
 **Optional Configuration**:
 - `MCP_MAX_SESSIONS` - Maximum concurrent sessions (default: 50)
 - `MCP_SESSION_TIMEOUT` - Session timeout in seconds (default: 7200)
-- `GEMINI_MODEL_DEFAULT` - Default Gemini model (default: "gemini-2.5-pro")
+- `GEMINI_MODEL_DEFAULT` - Default Gemini model (default: "gemini-2.5-pro-preview-05-06")
 - `MAX_VIDEO_DURATION` - Maximum video length in seconds (default: 7200)
 - `AUTO_CLEANUP_FILES` - Auto-cleanup uploaded files after session (default: "true")
 

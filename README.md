@@ -225,7 +225,7 @@ analyze_video_in_session(
 ```bash
 MCP_MAX_SESSIONS=50               # Maximum concurrent sessions
 MCP_SESSION_TIMEOUT=7200          # Session timeout in seconds (2 hours)
-GEMINI_MODEL_DEFAULT="gemini-2.5-pro"  # Default Gemini model
+GEMINI_MODEL_DEFAULT="gemini-2.5-pro-preview-05-06"  # Default Gemini model
 MAX_VIDEO_DURATION=7200           # Max video length in seconds
 AUTO_CLEANUP_FILES=true           # Auto-cleanup uploaded files
 LOG_LEVEL=INFO                    # Logging level (DEBUG, INFO, WARNING, ERROR)
