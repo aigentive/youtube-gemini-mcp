@@ -74,7 +74,14 @@ export GOOGLE_API_KEY="your_google_api_key_here"
 
 ## 🔧 Claude Desktop Integration
 
-Add to your Claude Desktop MCP configuration:
+### Quick Setup
+
+1. **Get Google AI API Key**: Visit [Google AI Studio](https://ai.google.dev/) to get your free API key
+2. **Add to Claude Desktop**: Copy the configuration below to your Claude Desktop settings
+
+### Production Configuration
+
+Add to your Claude Desktop MCP configuration (`claude_desktop_config.json`):
 
 ```json
 {
@@ -89,21 +96,31 @@ Add to your Claude Desktop MCP configuration:
 }
 ```
 
-For development:
+### Development Configuration
+
+For development work, use the Poetry configuration:
+
 ```json
 {
   "mcpServers": {
     "youtube-gemini-mcp-dev": {
       "command": "poetry",
       "args": ["run", "python", "-m", "youtube_gemini_mcp.server"],
-      "cwd": "/path/to/youtube-gemini-mcp",
+      "cwd": "/absolute/path/to/youtube-gemini-mcp",
       "env": {
-        "GOOGLE_API_KEY": "your_google_api_key_here"
+        "GOOGLE_API_KEY": "your_google_api_key_here",
+        "LOG_LEVEL": "DEBUG"
       }
     }
   }
 }
 ```
+
+### Configuration Templates
+
+We provide ready-to-use configuration files:
+- **Development**: `mcp-config.poetry.json` - For local development
+- **Production**: `mcp-config.private.json.example` - Copy and customize
 
 ## 📚 Available Tools
 
@@ -137,40 +154,106 @@ Analyze existing training videos to extract learning objectives and key points.
 ## ⚡ Quick Examples
 
 ### Analyze a YouTube Video
-```python
-# Direct analysis
-result = analyze_youtube_video(
+```bash
+# Direct analysis - perfect for quick insights
+analyze_youtube_video(
     youtube_url="https://youtube.com/watch?v=dQw4w9WgXcQ",
-    prompt="What is this video about?"
+    prompt="What is this video about? Provide a comprehensive summary."
 )
 ```
 
 ### Session-Based Analysis
-```python
-# Create session
+```bash
+# Create persistent session for multi-turn conversation
 session = create_video_session(
-    description="Learning about AI",
-    video_source="https://youtube.com/watch?v=abc123"
+    description="Learning about machine learning fundamentals",
+    video_source="https://youtube.com/watch?v=abc123",
+    session_name="ML Fundamentals Study"
 )
 
-# Multi-turn conversation
-analyze_video_in_session(session["session_id"], "What are the main topics?")
-analyze_video_in_session(session["session_id"], "Explain deep learning concepts")
-analyze_video_in_session(session["session_id"], "What examples are given?")
+# Build understanding through conversation
+analyze_video_in_session(
+    session_id=session["session_id"], 
+    prompt="What are the main topics covered in this lecture?"
+)
+
+analyze_video_in_session(
+    session_id=session["session_id"], 
+    prompt="Focus on the neural networks section - how are they explained?"
+)
+
+analyze_video_in_session(
+    session_id=session["session_id"], 
+    prompt="What practical examples or demonstrations are shown?"
+)
+
+analyze_video_in_session(
+    session_id=session["session_id"], 
+    prompt="Based on our discussion, what are the key takeaways for beginners?"
+)
+```
+
+### Local Video Analysis
+```bash
+# Upload and analyze private content
+analyze_local_video(
+    video_path="/path/to/your/presentation.mp4",
+    prompt="Extract the key business metrics and recommendations from this quarterly review"
+)
+```
+
+### Advanced: Timestamp-Specific Analysis
+```bash
+# Focus on specific video segments
+analyze_video_in_session(
+    session_id="your-session-id",
+    prompt="Analyze the demonstration shown in this segment",
+    timestamp_range="5:30-8:45"
+)
 ```
 
 ## 🔐 Configuration
 
 ### Environment Variables
-- `GOOGLE_API_KEY` (required) - Google AI API key
-- `MCP_MAX_SESSIONS` (optional) - Maximum concurrent sessions (default: 50)
-- `MCP_SESSION_TIMEOUT` (optional) - Session timeout in seconds (default: 7200)
 
-### Limitations
-- **YouTube videos**: No duration limit for sessions
-- **Local videos**: 48-hour session limit (Files API restriction)
-- **File size**: Maximum 2GB per video file
-- **Video length**: Recommended maximum 2 hours
+**Required**:
+- `GOOGLE_API_KEY` - Get your free API key from [Google AI Studio](https://ai.google.dev/)
+
+**Optional Configuration**:
+```bash
+MCP_MAX_SESSIONS=50               # Maximum concurrent sessions
+MCP_SESSION_TIMEOUT=7200          # Session timeout in seconds (2 hours)
+GEMINI_MODEL_DEFAULT="gemini-2.5-pro"  # Default Gemini model
+MAX_VIDEO_DURATION=7200           # Max video length in seconds
+AUTO_CLEANUP_FILES=true           # Auto-cleanup uploaded files
+LOG_LEVEL=INFO                    # Logging level (DEBUG, INFO, WARNING, ERROR)
+```
+
+### System Requirements
+- **Python**: 3.10+ (3.11+ recommended)
+- **Memory**: 4GB RAM minimum for video processing
+- **Storage**: 500MB for session data and temporary files
+- **Network**: High-speed internet for video processing
+
+### Limitations & Constraints
+
+#### YouTube Videos (Unlimited Sessions)
+- ✅ **No file size limits** - Direct URL processing
+- ✅ **Unlimited session duration** - No 48-hour restriction
+- ⚠️ **2-hour video limit** - Recommended maximum for optimal performance
+- ⚠️ **Public videos only** - Private/unlisted may not be accessible
+
+#### Local Videos (48-Hour Sessions)
+- ⚠️ **2GB file size limit** - Google Files API restriction
+- ⚠️ **48-hour auto-deletion** - Files automatically deleted after 48 hours
+- ⚠️ **20GB project limit** - Total storage quota per Google project
+- ❌ **No retention extension** - Cannot extend file lifespan beyond 48 hours
+
+#### Performance Guidelines
+- **Concurrent sessions**: Default maximum 50 active sessions
+- **Session timeout**: 2 hours of inactivity before cleanup
+- **Memory usage**: ~100MB per active session
+- **Response time**: 10-30 seconds for typical analysis requests
 
 ## 🧪 Testing
 
@@ -203,8 +286,34 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Claude Desktop](https://claude.ai/desktop)
 - [Google Gemini API](https://ai.google.dev/)
 
-## 📞 Support
+## 📚 Documentation
 
-- 📧 Email: [your.email@example.com]
-- 🐛 Issues: [GitHub Issues](https://github.com/yourusername/youtube-gemini-mcp/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/yourusername/youtube-gemini-mcp/discussions)
+- **[LLM.md](LLM.md)** - Comprehensive usage guide for AI systems
+- **[DEVELOPMENT.md](DEVELOPMENT.md)** - Development setup and architecture
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - How to contribute to the project
+- **[PRD.md](PRD.md)** - Complete product requirements document
+
+## 🤝 Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+### Quick Start for Contributors
+1. Fork the repository
+2. Set up development environment: `poetry install`
+3. Run tests: `poetry run pytest`
+4. Make your changes and add tests
+5. Submit a pull request
+
+## 📞 Support & Community
+
+- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/yourusername/youtube-gemini-mcp/issues)
+- 💡 **Feature Requests**: [GitHub Issues](https://github.com/yourusername/youtube-gemini-mcp/issues)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/yourusername/youtube-gemini-mcp/discussions)
+- 📖 **Documentation**: Check our comprehensive docs above
+
+### Getting Help
+
+1. **Check Documentation**: Start with [LLM.md](LLM.md) for usage questions
+2. **Search Issues**: Look for existing solutions in GitHub Issues
+3. **Create Issue**: Provide clear details and reproduction steps
+4. **Community**: Join discussions for general questions and ideas

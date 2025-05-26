@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "youtube-gemini-mcp": {
+      "command": "youtube-gemini-mcp",
+      "env": {
+        "GOOGLE_API_KEY": "your_actual_google_api_key_here",
+        "MCP_MAX_SESSIONS": "50",
+        "MCP_SESSION_TIMEOUT": "7200"
+      }
+    }
+  }
+}
