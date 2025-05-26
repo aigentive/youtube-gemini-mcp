@@ -56,5 +56,9 @@ warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = true
 
+[[tool.mypy.overrides]]
+module = ["yt_dlp", "google.*"]
+ignore_missing_imports = true
+
 [tool.pytest.ini_options]
 asyncio_default_fixture_loop_scope = "function"
