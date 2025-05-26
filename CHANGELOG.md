@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] - 2025-05-26
+
+### Fixed
+- GitHub Actions workflow configuration issues
+- Python version matrix format in CI pipeline
+- Updated GitHub Actions to latest versions (setup-python@v5, cache@v4)
+- Added manual trigger option for PyPI publishing workflow
+
+### Changed
+- Made code formatting checks non-blocking in CI to prevent unnecessary failures
+- Improved workflow reliability and error handling
+
 ## [0.1.0] - 2025-05-26
 
 ### Added
@@ -61,4 +73,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **API Reference**: Complete tool specifications and examples
 - **Configuration**: Environment variables and deployment options
 
+[0.1.1]: https://github.com/aigentive/youtube-gemini-mcp/releases/tag/v0.1.1
 [0.1.0]: https://github.com/aigentive/youtube-gemini-mcp/releases/tag/v0.1.0

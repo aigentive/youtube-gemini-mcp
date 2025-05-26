@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "youtube-gemini-mcp"
-version = "0.1.0"
+version = "0.1.1"
 description = "Session-based conversational YouTube video analysis MCP server using Gemini 2.5 Pro"
 authors = ["Laza Bogdan <laza.bogdan@macro-net.ro>"]
 readme = "README.md"
