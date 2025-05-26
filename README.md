@@ -20,7 +20,7 @@ A Model Context Protocol (MCP) server that provides conversational YouTube video
 
 ### 🔄 Session-Based Video Conversations
 Create persistent sessions for multi-turn video analysis:
-```bash
+```python
 # Create session
 create_video_session(
     description="Analyze machine learning lecture",
@@ -35,7 +35,7 @@ analyze_video_in_session(session_id="uuid", prompt="Explain the neural networks 
 
 ### 📹 Direct YouTube Processing
 No downloads required - process YouTube videos directly:
-```bash
+```python
 analyze_youtube_video(
     youtube_url="https://youtube.com/watch?v=abc123",
     prompt="Summarize this video's main points"
@@ -44,7 +44,7 @@ analyze_youtube_video(
 
 ### 💾 Local Video Support
 Upload and analyze local video files (48-hour retention):
-```bash
+```python
 analyze_local_video(
     video_path="/path/to/video.mp4",
     prompt="What happens in this video?"
@@ -61,7 +61,7 @@ analyze_local_video(
 ### Setup
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/youtube-gemini-mcp
+git clone https://github.com/your-username/youtube-gemini-mcp
 cd youtube-gemini-mcp
 
 # Install with Poetry
@@ -156,7 +156,7 @@ Analyze existing training videos to extract learning objectives and key points.
 ## ⚡ Quick Examples
 
 ### Analyze a YouTube Video
-```bash
+```python
 # Direct analysis - perfect for quick insights
 analyze_youtube_video(
     youtube_url="https://youtube.com/watch?v=dQw4w9WgXcQ",
@@ -165,7 +165,7 @@ analyze_youtube_video(
 ```
 
 ### Session-Based Analysis
-```bash
+```python
 # Create persistent session for multi-turn conversation
 session = create_video_session(
     description="Learning about machine learning fundamentals",
@@ -196,7 +196,7 @@ analyze_video_in_session(
 ```
 
 ### Local Video Analysis
-```bash
+```python
 # Upload and analyze private content
 analyze_local_video(
     video_path="/path/to/your/presentation.mp4",
@@ -205,7 +205,7 @@ analyze_local_video(
 ```
 
 ### Advanced: Timestamp-Specific Analysis
-```bash
+```python
 # Focus on specific video segments
 analyze_video_in_session(
     session_id="your-session-id",
@@ -270,14 +270,6 @@ poetry run pytest --cov=youtube_gemini_mcp
 poetry run mypy src/
 ```
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open Pull Request
-
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -308,9 +300,9 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guid
 
 ## 📞 Support & Community
 
-- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/yourusername/youtube-gemini-mcp/issues)
-- 💡 **Feature Requests**: [GitHub Issues](https://github.com/yourusername/youtube-gemini-mcp/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/yourusername/youtube-gemini-mcp/discussions)
+- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/your-username/youtube-gemini-mcp/issues)
+- 💡 **Feature Requests**: [GitHub Issues](https://github.com/your-username/youtube-gemini-mcp/issues)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/your-username/youtube-gemini-mcp/discussions)
 - 📖 **Documentation**: Check our comprehensive docs above
 
 ### Getting Help
