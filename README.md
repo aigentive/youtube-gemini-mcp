@@ -1,3 +1,5 @@
+![YouTube Gemini MCP Hero](assets/hero-image.png)
+
 # YouTube Gemini MCP Server
 
 A Model Context Protocol (MCP) server that provides conversational YouTube video analysis capabilities using Gemini 2.5 Pro. Analyze videos through multi-turn conversations with advanced visual understanding.
