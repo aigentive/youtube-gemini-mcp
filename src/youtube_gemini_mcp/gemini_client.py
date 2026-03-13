@@ -21,7 +21,11 @@ class GeminiClient:
         logger.info("GeminiClient initialized")
 
     def analyze_youtube_video_direct(
-        self, youtube_url: str, user_prompt: str, timestamp_range: Optional[str] = None
+        self,
+        youtube_url: str,
+        user_prompt: str,
+        timestamp_range: Optional[str] = None,
+        model: str = "gemini-2.5-flash",
     ) -> Dict[str, Any]:
         """Analyze YouTube video directly using URL (PREFERRED METHOD)."""
         try:
@@ -42,9 +46,9 @@ class GeminiClient:
             # Add user prompt
             prompt_parts.append(types.Part(text=user_prompt))
 
-            # Generate response using Gemini 2.5 Pro
+            # Generate response
             response = self.client.models.generate_content(
-                model="models/gemini-2.5-pro-preview-05-06",
+                model=model,
                 contents=types.Content(parts=prompt_parts),
             )
 
@@ -87,7 +91,11 @@ class GeminiClient:
             raise
 
     def analyze_uploaded_video(
-        self, file_id: str, user_prompt: str, timestamp_range: Optional[str] = None
+        self,
+        file_id: str,
+        user_prompt: str,
+        timestamp_range: Optional[str] = None,
+        model: str = "gemini-2.5-flash",
     ) -> Dict[str, Any]:
         """Analyze uploaded video using Files API (for local videos)."""
         try:
@@ -109,7 +117,7 @@ class GeminiClient:
 
             # Generate response
             response = self.client.models.generate_content(
-                model="models/gemini-2.5-pro-preview-05-06",
+                model=model,
                 contents=types.Content(parts=prompt_parts),
             )
 
@@ -129,6 +137,7 @@ class GeminiClient:
         session: VideoSession,
         user_prompt: str,
         timestamp_range: Optional[str] = None,
+        model: str = "gemini-2.5-flash",
     ) -> Dict[str, Any]:
         """Analyze video using conversation context."""
         try:
@@ -170,7 +179,7 @@ class GeminiClient:
 
             # Generate response
             response = self.client.models.generate_content(
-                model="models/gemini-2.5-pro-preview-05-06",
+                model=model,
                 contents=types.Content(parts=prompt_parts),
             )
 
@@ -250,7 +259,7 @@ class GeminiClient:
             return {
                 "success": True,
                 "models": model_list,
-                "default_model": "models/gemini-2.5-pro-preview-05-06",
+                "default_model": "gemini-2.5-flash",
             }
 
         except Exception as e:
