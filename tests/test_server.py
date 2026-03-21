@@ -1,5 +1,7 @@
 """Basic tests for the YouTube Gemini MCP Server."""
 
+import importlib
+import logging
 import os
 import sys
 from pathlib import Path
@@ -111,3 +113,43 @@ def test_files_uploader_import():
 
     except Exception as e:
         pytest.fail(f"FilesUploader import failed: {e}")
+
+
+@pytest.mark.parametrize(
+    "log_level_env,expected_root_level",
+    [
+        ("DEBUG", logging.DEBUG),
+        ("INFO", logging.INFO),
+        ("ERROR", logging.ERROR),
+        (
+            "INVALID",
+            logging.INFO,
+        ),  # Invalid value falls back to INFO via getattr default
+    ],
+)
+def test_log_level_env_var(log_level_env, expected_root_level):
+    """Test that LOG_LEVEL env var controls root logger and mcp logger is always WARNING."""
+    import youtube_gemini_mcp.server as server_module
+
+    # Save original logging state
+    root_logger = logging.getLogger()
+    original_root_level = root_logger.level
+    mcp_logger = logging.getLogger("mcp")
+    original_mcp_level = mcp_logger.level
+
+    try:
+        with patch.dict(os.environ, {"LOG_LEVEL": log_level_env}):
+            importlib.reload(server_module)
+
+            assert root_logger.level == expected_root_level, (
+                f"Expected root logger level {expected_root_level} for LOG_LEVEL={log_level_env}, "
+                f"got {root_logger.level}"
+            )
+            assert (
+                mcp_logger.level == logging.WARNING
+            ), f"Expected mcp logger to be WARNING, got {mcp_logger.level}"
+    finally:
+        # Restore original logging state
+        root_logger.setLevel(original_root_level)
+        mcp_logger.setLevel(original_mcp_level)
+        importlib.reload(server_module)

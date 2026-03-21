@@ -111,6 +111,7 @@ GOOGLE_API_KEY="your_google_api_key_here"
 MCP_MAX_SESSIONS=50                    # Maximum concurrent sessions
 MCP_SESSION_TIMEOUT=7200               # Session timeout in seconds
 GEMINI_MODEL_DEFAULT="gemini-2.5-pro-preview-05-06"  # Default model
+LOG_LEVEL="INFO"                       # Python log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
 ```
 
 ## Development Commands

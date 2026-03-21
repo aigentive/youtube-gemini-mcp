@@ -16,13 +16,19 @@ from .youtube_validator import YouTubeValidator
 # Load environment variables
 load_dotenv()
 
+# Configure log level from environment
+_log_level = os.getenv("LOG_LEVEL", "INFO").upper()
+
 # Configure logging (CRITICAL: Use exact same format as openai-image-mcp)
 logging.basicConfig(
-    level=logging.DEBUG,
+    level=getattr(logging, _log_level, logging.INFO),
     format="%(asctime)s - %(name)s - %(levelname)s - %(pathname)s:%(lineno)d - %(message)s",
     handlers=[logging.StreamHandler(sys.stderr)],
     force=True,
 )
+
+# Suppress MCP framework internal loggers (PingRequest noise, lowlevel server)
+logging.getLogger("mcp").setLevel(logging.WARNING)
 
 logger = logging.getLogger(__name__)
 logger.info("YouTube Gemini MCP Server initializing...")
@@ -480,6 +486,7 @@ def get_server_stats() -> Dict[str, Any]:
                 ),
                 "max_sessions": os.getenv("MCP_MAX_SESSIONS", "50"),
                 "session_timeout": os.getenv("MCP_SESSION_TIMEOUT", "7200"),
+                "log_level": _log_level,
             },
         }
 
